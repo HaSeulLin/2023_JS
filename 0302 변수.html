@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1 id="title">id를 통해 내용을 작성합니다</h1>
+    <input type="text" value="안녕" id="input">
+    
     <!-- 자바스크립트 -->
     <script>
         // 변수는 값을 담아서 저장할 수 있다
@@ -17,8 +21,67 @@
         let sum = numTemp+num;
         // 변수 이름을 통해서 값을 꺼내서 사용할 수 있다
         console.log(num+10);
-        console.log(sum);
 
-    </script>
+        // 복합대입연산자
+        let numOpar = 0;
+        console.log(numOpar);
+        // 현재 변수에 1을 더해줄 때
+        numOpar = numOpar+1;
+        console.log(numOpar);
+        // 복합대입연산자 이용해서 1 더해줄 때
+        numOpar += 1;
+        console.log(numOpar);
+        // 복합대입연산자 이용해서 3 곱할 때
+        numOpar *= 3;
+        console.log(numOpar);
+        // 증감연산자: 1씩 감소, 증가할 때 사용
+        numOpar++;
+        console.log(numOpar);
+        // 후위 연산자: 가장 마지막에 계산
+        // 실행순서: console.log() >> numOpar++
+        console.log(numOpar++);
+        console.log(numOpar);
+        // 전위 연산자: 가장 처음에 계산
+        // 실행순서: numOpar++ >> console.log()
+        console.log(++numOpar);
+        console.log(numOpar);
+
+        // 일반 계산식과 함께 사용할 때도 가장 먼저
+        // 실행 순서: ++numOpar >> /5 >> console.log()
+        console.log(++numOpar/5);
+
+        let sumNum=0;
+        sumNum=sumNum+1;
+        console.log("sumNum:",sumNum);
+        // 복합대입연산자
+        sumNum += 1;
+        console.log("sumNum:",sumNum);
+        // 증감연산자
+        sumNum++;
+        console.log("sumNum:",sumNum);
+
+        // 복합대입연산자
+        sumNum -= 1;
+        console.log("sumNum:",sumNum);
+        // 증감연산자
+        sumNum--;
+        console.log("sumNum:",sumNum);
+
+        let nullNum=null;
+
+        /* 콘솔 또는 HTML에 출력하기 위한 명령어 */
+        console.log("콘솔에 내용을 출력합니다");
+        alert("경고창에 내용 출력")
+        document.getElementById('title').innerHTML="id를 통해 태그를 찾고 갖을 할당할 수 있다";
+
+        /* 값을 입력하는 방법 */
+        /* 창을 띄워서 값 가져오기 */
+        let name = prompt("이름을 입력하세요");
+        alert(name); //출력 확인
+
+        // id를 통해서 input 태그에 있는 value 값 가져오기
+        let inputValue = document.getElementById('input').value;
+        console.log(inputValue);
+</script>
 </body>
 </html>

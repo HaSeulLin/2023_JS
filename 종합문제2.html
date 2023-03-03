@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="result"></h1>
+    <script>
+        // 1. prompt를 통해서 태어난 년도 값 받아옴
+        // promt("message","미리 입력된 input default 값");
+        let birth = prompt("태어난 연도를 입력하세요", "1980");
+
+        // 2. 현재 년도와 태어난 년도를 계산해서 현재 나이 구함
+        old=2023-birth+1;
+
+        // 3. HTML에 p나 h1 태그를 찾아 화면에 나이 출력
+        document.getElementById('result').innerHTML="현재 나이는 "+old+"세입니다.";
+        // document.getElementById('result').innerHTML=`현재 나이는 ${old}세입니다.`;
+        
+        // 4. console.log를 이용해서 콘솔창에 .isNaN 출력 -> 값이 NaN이면 true, 아니면 false
+        console.log( isNaN(old) );
+    </script>
+</body>
+</html>
