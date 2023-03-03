@@ -9,12 +9,15 @@
 <body>
     <h1>점수결과 입니다</h1>
     <p id="result"></p>
-
     <script>
-        let grade = prompt("점수를 입력해주세요");
-        pass = grade >= 60;
-        PoN=Boolean(pass);
-        document.getElementById("result").innerHTML=PoN;
+
+        // 1. prompt로 점수값 받아오기
+        let grade = prompt("점수를 입력해주세요", "0");
+        // 2. 점수값(60)을 비교해서 결과 저장
+        // html에 쓴 id result와 JS의 resul 변수값은 별개.
+        let result = pass = grade >= 60;
+        // 3. 태그값 찾아서 비교한 결과를 화면에 출력
+        document.getElementById("result").innerHTML=pass;
     </script>
 </body>
 </html>

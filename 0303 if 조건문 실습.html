@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let check = true;
+        if (check){
+            document.write("<p>확인하였습니다</p>");
+        }
+        // 1. 조건식 : 맞는(같다) 단어를 입력
+        // >> let word = "의자"; word==??
+        let word = prompt("단어 입력","의자");
+        if (word=="의자"){
+            document.write("<h1>맞습니다</h1>");
+        }
+
+        /* if-else 실습 */
+        // 1. 변수값 money
+        // 2. 조건식: money >= 1500
+        let money=10000;
+        // 3. 참일 때 출력: 버스를 타고갑니다
+        if (money>1500){
+            document.write("<p>버스를 타고 갑니다</p>");
+        }
+        // 4. 거짓일 때 출력: 
+        else{
+            document.write("<p>걸어갑니다</p>");
+        }
+
+        // 1. 변수: isCard (임의의값으로 할당)
+        let isCard=false;
+        // 2. 조건식 : isCard
+        if (isCard){
+            document.write("<p>버스를 타고 갑니다</p>");
+        }
+        else{
+            document.write("<p>걸어갑니다</p>");
+        }
+
+        /*if-else if-else 조건문 실습*/
+        let dust=40;
+        if((0<=dust)&&(dust<31)){
+            document.write("<p>미세먼지 좋음</p>");
+        }
+        else if((31<=dust)&&(dust<81)){
+            document.write("<p>미세먼지 보통</p>");
+        }
+        else if((81<=dust)&&(dust<151)){
+            document.write("<p>미세먼지 나쁨</p>");
+        }
+        else{
+            document.write("<p>미세먼지 매우 나쁨</p>");
+        }
+
+        /*홀수짝수판별*/
+        let number=20;
+        if ((number%2)==0){
+            document.write("<p>짝수입니다</p>");
+        }
+        else{
+            document.write("<p>홀수입니다</p>");
+        }
+
+        /*음수양수0판별*/
+        let number_np=-10;
+        if(number_np<0){
+            document.write("<p>음수입니다</p>");
+        }
+        else if(number_np>0){
+            document.write("<p>양수입니다</p>");
+        }
+        else{
+            document.write("<p>0입니다</p>");
+        }
+
+        /*구매한 가격을 입력하면 할인율이 적용된 금액 출력*/
+        let price=60000;
+        // let discount=0;
+        let price_r=0;
+        if((10000<=price)&&(price<50000)){
+        //    discount=price*5/100;
+        //    let price_r=price-discount;
+            price_r=price-0.05*price;
+            document.write("<p>할인율이 적용된 금액입니다: "+price_r+"</p>");
+        }
+        else if((50000<=price)&&(price<100000)){
+        //    discount=price*10/100;
+        //    let price_r=price-discount;
+            price_r=price-0.1*price;
+            document.write(`<p>할인율이 적용된 금액입니다: ${price_r}</p>`);            
+        }
+        else if(100000<=price){
+        //    discount=price*20/100;
+        //    let price_r=price-discount;
+            price_r=price-0.2*price;
+            document.write("<p>할인율이 적용된 금액입니다: "+price_r+"</p>");
+        }
+        else{
+            document.write("<p>할인이 적용되지 않습니다</p>");
+        }
+    </script>
+</body>
+</html>

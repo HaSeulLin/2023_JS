@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 자바스크립트 -->
+    <script>
+        // 조건문 : 조건에 따라서 문장이 달라진다
+        // 순서도를 통해서 조건문을 그림으로 확인할 수 있다
+        // 참(true)만 있는 if문 << false 넣으면 안 뜬다
+        if (true) {
+            console.log("이 조건문은 참입니다");
+            document.write("<h1>이 조건문은 참입니다</h1>");
+        }
+        document.write("<p>if문에 상관없이 실행되는 명령어</p>")
+
+        // 조건문에서 조건식이 중요하다
+        // 조건식 : 계산결과 boolean값으로 출력
+        let num = "문자";
+        if (isNaN(num)){
+            document.write(
+                "<p>" 
+                + "값이 NaN입니다"
+                + "</p>"
+            ) // JS 안에서 enter치려면 줄별로 따로따로 "" 감싸줘야함
+        }
+        // 1. 문제 안에 조건문을 사용하는지 확인 (~이면)
+        // 2. 조건식 확인 (비교, 참거짓)
+        let grade = prompt("점수 입력: ", "60");
+        if (grade>=60){
+            document.write("<p>합격입니다</p>");
+        }
+        else {
+            document.write("<p>불합격입니다</p>");
+        }
+        // if-else 조건문
+        // 참일 때의 내용과 거짓일 때의 내용을 다르게 작성할 때 사용
+        let isSwitch = true;
+        if (isSwitch){
+            // 조건식이 참일 때 실행
+            document.write("<p>전등이 켜졌습니다</p>");
+        }
+        else {
+            // 조건식이 거짓일 때 실행
+            document.write("<p>전등이 꺼졌습니다</p>");
+        }
+
+        // 문자열로 조건식 작성(==)
+        // word = "의자"; /같지 않을 때 아니다 출력
+        let word = "의자";
+        // 조건식이 같지 않다가 들어갔을 때
+        // 기호(비교연산자) 기준으로 확인
+        if (word=="의자") {
+            document.write("<p>같다</p>");
+        }
+        if (word != "의자"){
+            // 조건식의 결과 true
+            document.write("<p>!=기호를 맞게 썼다</p>");
+        }
+        else{
+            // 조건식의 결과 false
+            document.write("<p>!= 맞지 않게 썼다</p>");
+        }
+
+
+        document.write("<hr>");
+        document.write("<h1>중첩조건문</h1>")
+        /* 조건이 여러개가 있을 때 if문 안에 if문을 사용할 수 있다 */
+            // 1. 지하철이 파업했는지
+            // 2. 버스가 파업했는지
+        let subwayWorkout=true; //true 파업
+        let busWorkout=true; 
+        if(subwayWorkout){
+            // 지하철이 파업이 true
+            if(busWorkout){
+                //버스 파업이 true
+                document.write("<p>택시를 탄다</p>");
+            }
+            else{
+                //버스 정상 운행
+                document.write("<p>버스를 탄다</p>");
+            }
+        }
+        else{ // 지하철 정상 운행
+            document.write("<p>지하철을 탄다</p>");
+        }
+        // if-else if 조건문
+        // 조건 1. 지하철 파업 > 2. 버스 파업 > 3. 택시
+        // if-else if: 참인 조건을 먼저 출력
+        // >>지하철 파업X면 지하철탑승,(false)
+        // 지하철 파업O면 버스탑승>>버스 파업O면 택시탑승,(true)
+        //                       >>버스 파업x면 버스탑승(else)
+        if(subwayWorkout == false){
+            document.write("<p>지하철을 타고 갑니다</p>");
+        }
+        else if(!busWorkout){
+            //!busWorkout과 busWorkout==false는 같다
+            document.write("<p>버스를 타고 갑니다</p>");
+        }
+        else{
+            document.write("<p>택시를 타고 갑니다</p>");
+        }
+
+
+        //if else if 연습
+        // 1. 변수: mathScore
+        // 2. 조건식/참:
+        // 90점이상:A 80점이상:B 70점이상:C 이하의점수:F
+        let mathScore=85;
+        if(90<=mathScore){
+            document.write("<p>점수 A</p>");
+        }
+        else if(80<=mathScore){
+            document.write("<p>점수 B</p>");
+        }
+        else if(70<=mathScore){
+            document.write("<p>점수 C</p>");
+        }
+        else{
+            document.write("<p>점수 F</p>");
+        }
+    </script>
+</body>
+</html>

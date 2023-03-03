@@ -7,8 +7,8 @@
         {
             "type": "msedge",
             "request": "launch",
-            "name": "Open 0302 변수.html",
-            "file": "d:\\리엑트_하슬린\\JS\\0302 변수.html"
+            "name": "Debugging",
+            "file": "d:\\리엑트_하슬린\\JS\\0303 if 조건문 실습.html"
         }
     ]
 }
