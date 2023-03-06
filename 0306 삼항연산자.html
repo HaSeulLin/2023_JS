@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 단항: ++, -- 하나의 변수에서 쓸 수 있는 연산자
+        // 삼항: 세 개의 값을 이용해서 쓸 수 있는 연산자
+        true ? "참입니다" : "거짓" ;
+        // 변수에 값을 담아서 사용하거나 console.log에 담아서 바로 출력
+        let result = false ? "참입니다" : "거짓";
+        
+        let money=1000;
+        console.log(money>=1500?"버스를 탈 수 있다"
+                        :(1500-money)+"원 부족. 버스를 탈 수 없다");
+        // 삼항 연산자 연습
+        // 나이가 19세 이상이면 성인입니다.
+        // 미만이면 학생입니다를 변수에 담은 후
+        // document.write로 출력하세요
+        let = old=20;
+        let result_o = old>=19 ? "성인입니다" : "학생입니다"
+        document.write(result_o);
+
+        // 삼항 연산자 활용
+        // 변수 초기화에 사용 
+        // null이나 undefine 같은 값을 거를 때 삼항 연산자 활용 가능
+        let name=prompt("이름을 적어주세요");
+        name = name ? name : "이름이 없습니다.";
+        document.write(`<p>${name}</p>`);
+
+        // 삼항 연산자 실습
+        let a=30;
+        let b=20;
+        let max = a>=b ? a : b ;
+        document.write(`<p>더 큰 값은 ${max}입니다</p>`);
+    </script>
+</body>
+</html>

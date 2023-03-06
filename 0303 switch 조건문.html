@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    
     <script>
         let score="A+";
         switch(score){
@@ -16,10 +15,14 @@
                 break;
 
             case "B":
-                document.write("<p>아쉽습니다</p>");
+                document.write("<p>잘했습니다</p>");
                 break;
 
             case "C":
+                document.write("<p>아쉽습니다</p>");
+                break;
+
+            case "D":
                 document.write("<p>분발하세요</p>");
                 break;
 
@@ -27,6 +30,23 @@
                 document.write("<p>잘못된 점수입니다</p>");
                 break;
         }
+
+        let month=1;
+        switch(month){
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                document.write(`<p>${month}월은 31일까지 있습니다.</p>`);
+                break;
+            case 4: case 6: case 9: case 11:
+                document.write(`<p>${month}월은 30일까지 있습니다.</p>`);
+                break;
+            case 2:
+                document.write(`<p>${month}월은 28일까지 있습니다.</p>`);
+                break;
+            default:
+                document.write(`<p>잘못된 입력입니다.</p>`);
+                break;
+        }
+
     </script>
 </body>
 </html>

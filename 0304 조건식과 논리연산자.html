@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 논리 연산자
+        // 조건문에서 조리식을 연결해서 사용할 땨 싸움
+        // || OR 또는 기호
+        // 연결되는 조건식 중에 하나라도 참이면 참
+        // 버스 탑승 : 현금/교통카드 > 탈 수 있다
+        let money=1500;
+        let card=true;
+        if (money >= 1500 || card == true){
+            document.write("<p>버스를 탈 수있다</p>");
+        }
+
+        // && 그리고 기호
+        // 작성된 조건식 모두가 참일 때 참
+        let x = 130 ;
+        if ((100 < x) && (x <1000)){
+            document.write("<p>100과 1000 사이의 수</p>");
+        }
+
+        // &&와 || 혼합 계산
+        // 순서에 유의해서 작성: 우선순위 없이 순서대로 계산
+        // 먼저 계산하고 싶은 계산식은 () 통해서 묶어줄 수 있다
+        if (true && (false || true)){
+            document.write("<p>계산 결과가 참입니다</p>");
+        }
+        else {
+            document.write("<p>계산 결과가 거짓입니다</p>");
+        }
+    </script>
+</body>
+</html>

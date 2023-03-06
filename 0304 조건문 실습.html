@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let num1=10;
+    let num2=20;
+    if(num1>num2){
+        document.write(`<p>${num1}(이)가 ${num2}보다 더 큰 수입니다</p>`);
+    }
+    else if(num2>num1){
+        document.write(`<p>${num2}(이)가 ${num1}보다 더 큰 수입니다</p>`);
+    }
+    else{
+        document.write("<p>같은 수입니다</p>");
+    }
+
+    let book=3;
+    if(book<5){
+        document.write("<p>책을 빌릴 수 있습니다</p>"
+        +`<p>현재 빌릴 수 있는 책은 ${5-book}권입니다</p>`);
+    }
+    else{
+        document.write("<p>대출 받을 수 있는 책을 다 받았습니다</p>");
+    }
+
+
+    let grade=65;
+    if(grade>=70){
+        document.write("<p>합격</p>");
+    }
+    else if(grade>=60){
+        document.write("<p>보충수업</p>");
+    }
+    else{
+        document.write("<p>재수강</p>");
+    }
+
+    let month=1;
+    switch(month){
+    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+        document.write(`<p>${month}월은 31일까지 있습니다.</p>`);
+        break;
+    case 4: case 6: case 9: case 11:
+        document.write(`<p>${month}월은 30일까지 있습니다.</p>`);
+        break;
+    case 2:
+        document.write(`<p>${month}월은 28일까지 있습니다.</p>`);
+        break;
+    default:
+        document.write(`<p>잘못된 입력입니다.</p>`);
+        break;
+    }
+    // if문으로도 작성 가능. case 1: >> if (month ==1) 식으로.
+//    if (month ==1 || month == 3 || month == 5 || month == 7 | month == 8)
+    </script>
+</body>
+</html>
