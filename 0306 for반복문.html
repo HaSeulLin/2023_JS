@@ -33,7 +33,7 @@
         for (let i=10; i>0; i--){
             document.write(`<p>카운트다운 ${i}</p>`);
         }
-        
+
         for (let i=0; i<10; i++){
             document.write(`<p>카운트다운 ${10-i}</p>`);
         }
@@ -41,6 +41,133 @@
         // for 반복문 실습2 구구단 2단
         for (let i=1; i<10; i++){
             document.write(`<p>구구단 2 X ${i} = ${2*i}</p>`);
+        }
+
+        document.write("<hr>");
+        // for in문 / for of 문
+        // in: 배열의 요소갯수만큼 반복
+        let numbers = ["일","이","삼"];
+        for (i in numbers){
+            // i의 값은 인덱스의 값 >> 배열값이 아니라 0, 1, 2로 나옴
+            document.write(`<p>${i}</p>`);
+            // numbers[인덱스]를 통해 배열안의 값을 가져올 수 있다
+            document.write(`<p>${numbers[i]}</p>`);
+        }
+        // document.write(`<p>배열의 길이:${numbers.length}</p>`);
+        // numbers.length로도 길이만큼 반복 가능
+
+        // 배열의 길이로 반복
+        //1. 반복횟수 : 배열의 길이(배열.length)
+        //2. 초기값 : 0, 증가(++), 조건식 : i<배열.length
+        for (let i=0; i<numbers.length; i++){
+            document.write(`<p>${i}</p>`);
+            document.write(`<p>${numbers[i]}</p>`);
+        }
+
+        // for of 문: 배열의 값을 가져와서 반복
+        for (number of numbers){
+            //for (변수of배열/객체) //변수값: 배열의 요소의 값
+            document.write(`<p>${number}</p>`);
+        }
+
+        // for in문 실습
+        let grades=[30,50,100,70,90,60,10];
+        for (i in grades){
+            if (grades[i]>=60){
+                document.write(`<p>${grades[i]}는 합격</p>`);
+            }
+            else {
+                document.write(`<p>${grades[i]}는 불합격</p>`);
+            }
+        }
+        document.write("<hr>");
+        // 배열의 길이를 이용한 for
+        for (let i=0; i<grades.length; i++){
+            //조건문: qustn(grades[i]), 조건식 (>=60)
+            if (grades[i]>=60){
+                document.write(`<p>${grades[i]}는 합격</p>`);
+            }
+            else {
+                document.write(`<p>${grades[i]}는 불합격</p>`);
+            }
+        }
+        document.write("<hr>");
+        // for of문 실습
+        for (grade of grades){ //변수는 배열 요소값(아무거나지정)
+            if (grade>=60){
+                document.write(`<p>${grade}는 합격</p>`);
+            }
+            else {
+                document.write(`<p>${grade}는 불합격</p>`);
+            }
+        }
+
+        /* 배열의 반복문의 in과 of의 차이 */
+        // in 인덱스를 사용: 배열의 각 값에 직접 접근
+        // of 값을 할당 받아옴: 배열의 값에 직접 접근 x
+
+        let students = ["홍길동","","장발장",""];
+        // 배열 안의 값을 바꿀 때는 인덱스 바꿔야 함
+        students[1]=["성춘향"];
+        document.write(`<p>${students}</p>`);
+        
+        for (student of students){
+            student = "이름없음";
+        }
+        document.write(`<p>${students}</p>`); // of로는 안바뀜 (값만 가져옴)
+
+        for (let i in students){
+            students[i]="이름없음";
+        }
+        document.write(`<p>${students}</p>`); // in은 바뀜
+
+        /* 반복문과 조건문 실습 */
+        // 1~100까지 짝수만 출력하세요
+        // 1~50까지 7의 배수만 출력하세요
+
+        for (i=1; i<=100; i++){
+            if (i%2==0){
+                document.write(`${i}, `);
+            }
+        }
+        document.write("<br>");
+        for (i=1; i<=50; i++){
+            if (i%7==0){
+                document.write(`${i} `);
+            }
+        }
+        document.write("<br>");
+        // if문을 쓰지 않고 증감식의 값을 바꿔서 출력
+        for (let i=2; i<=100; i+=2){
+            document.write(`${i} `);
+        }
+
+        // 중첩 반복문
+        // for문 안에 for문 사용
+        for (let i=0; i<3; i++){
+            for (let j=0; j<2; j++){
+                document.write(`<span>(i:${i}, j:${j}) </span>`);
+            }
+        }
+
+        // 중첩 for문 실습
+        for (i=2;i<10;i++){
+            for(let j=1;j<10;j++){
+                document.write(`<p>${i}*${j}=${i*j}</p>`);
+            }
+        }
+
+        /* 중첩 배열 */
+        let array = [[1,2], [3,4], [5,6]];
+        // 중첩배열을 사용할 때, 바깥 배열의 요소의 인덱스를 확인
+        // 안쪽 배열의 요소를 인덱스를 확인하여 값을 가져올 수 있다
+
+        // 중첩배열과 반복문
+        for (let i=0; i<3; i++){
+            for (let j=0; j<2; j++){
+                document.write(`<span>${array[i][j]}</span>`);
+            }
+            document.write("<br>");
         }
     </script>
 </body>
