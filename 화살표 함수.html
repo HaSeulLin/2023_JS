@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--화살표 함수 실습-->
+    <script>
+        let subArrow = (num1,num2) => num1-num2;
+    </script>
+</head>
+<body>
+    <script>
+        /* 화살표함수: 익명함수를 더 짧게 표현한 함수 */
+        // function이란느 키워드 대신 => 기호로 사용
+        let hi = function() {document.write("<p>안녕</p>");}
+        let hello = () => {document.write("<p>hi</p>");}
+        hi();
+        hello();
+
+        // 매개변수의 값이 1개일 경우 > ()없이 매개변수 이름 사용 가능
+        // 한줄로 작성할 때 {}없이 작성 가능
+        let introname = name => document.write(`<p>${name}</p>`);
+        introname("홍길동");
+
+        // {}없이 작성하면 값의 결과는 자동으로 return에 들어간다!
+        // 코딩 무게 줄일 수 있음!
+        let oddEvenCheckOper = num => (num%2==0)?"짝수":"홀수";
+        document.write(`${oddEvenCheckOper(4)}`);
+        document.write(`${oddEvenCheckOper(5)}`);
+
+        // {}를 사용해서 화살표 함수를 쓸 때는 return 직접 작성해야함
+        let oddEvenCheck = num => {
+            if (num%2==0) {
+                return "짝수";
+            }
+            else {
+                return "홀수";
+            }
+        }
+        document.write(`${oddEvenCheck(4)}`);
+        document.write(`${oddEvenCheck(5)}`);
+
+        // 화살표 함수 실습
+        document.write(subArrow(5,10));
+
+        // 함수 실습
+        function ask(question, yes, no) {
+            if (confirm(question)) yes()
+            // confirm이 true면 yes() 함수 실행 > 함수실행값도 받아서 넣을 수 있다?
+            else no();
+        }
+
+        ask(
+            "동의하십니까?",
+            function() { alert("동의하셨습니다."); },
+            function() { alert("취소 버튼을 누르셨습니다."); }
+        );
+        /*
+        ask ("동의하십니까",
+            () => alert("동의하셨습니다."),
+            () => alert("취소 버튼을 누르셨습니다.")    
+        )
+        */
+    </script>
+</body>
+</html>
