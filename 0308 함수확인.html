@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 함수는 반복해서 출력하는 내용을 저장하는 공간 */
+        // 수학에서 쓰는 함수 형태를 자바스크립트 함수로 만들기
+        // y = 2x +3;
+        // 매개변수(호출할 때 가져올 값을 담는 공간): x
+        // 리턴값: 함수에서 내보내줄 값 : 2x + 3
+        function math(x){
+            return 2*x+3;
+        }
+        // 함수 호출 : math(값);
+        // Number()를 사용하는 방식과 같다
+        
+        // 매개변수와 리턴값이 없는 함수
+        function intro(){
+            document.write("<p>안녕하세요 반갑습니다</p>");
+        }
+
+        // 함수 호출
+        intro();
+        intro();
+    </script>
+</body>
+</html>
