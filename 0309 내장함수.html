@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 내장함수 :  */
+        // parseInt() 문자열에서 숫자를 찾아서 숫자로 반환
+        // 숫자가 없다면 NaN을 반환
+        document.write(`<p>${parseInt("10살")+10}</p>`);
+        document.write(`<p>${parseInt("살")}</p>`);
+
+        // parseFloat() 문자열에서 실수를 찾아서 실수로 반환
+        document.write(`<p>${parseFloat("17.5도")+0.3}</p>`);
+
+        // isFinite() 숫자값(계산식)을 넣었을 때 유리수면 true 반환
+        // return이 boolean인 함수는 if문의 조건식으로도 많이 사용한다.
+        document.write(`<p>${isFinite(10.3)}</p>`);
+
+        // 타이머 함수 : 타이머함수 안에 넣어준 함수를 시간에 따라 실행
+        let timerId = setTimeout(function(){
+            document.write("<p>1초가 지났습니다</p>");
+        },1000);
+
+        // 타이머 함수 뒤에 작성된 내용은 바로 실행
+        document.write("setTimeout 다음에 작성된 내용입니다.");
+
+        // 1초가 지났습니다라고 출력하는 타이머함수 중지
+        clearTimeout(timerId);
+    </script>
+</body>
+</html>

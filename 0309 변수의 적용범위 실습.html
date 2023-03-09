@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/0309 변수의 적용범위 실습.js"></script>
+    <script>
+        // 변수 적용범위 실습1
+        for(let checkCount=1; checkCount<=maxCount; checkCount++){
+            document.write(`<p>${maxCount} 중의 ${checkCount}</p>`);
+        }
+        // 변수 적용범위 실습2
+        function printString(){
+                let inString = "안에 있는 문자입니다."
+                document.write(`<p>${inString}</p>`);
+            }
+        printString();
+        document.write(`<p>${outString}</p>`);
+    </script>
+</body>
+</html>

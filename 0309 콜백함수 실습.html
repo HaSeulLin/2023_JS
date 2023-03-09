@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 콜백함수 실습
+        function text(string){
+            document.write(`<p>${string}</p>`);
+        }
+
+        // text() 함수와 string 받아와서
+        // text(string)을 실행하고, string이 출력되었습니다 라고 출력하는 함수
+        function textCheck(f, string){
+            f(string);
+            document.write(`<p>${string}이 출력되었습니다.</p>`);
+        }
+        textCheck(text, "Limbus");
+    </script>
+</body>
+</html>
