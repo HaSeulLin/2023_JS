@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 함수 선언식은 코드 실행 흐름에 영향이 없기 때문에 
+        head안의 script로 따로 빼서 작성한다 */
+
+        // document.write(`${}`); 함수
+        // 바꾸고자 하는 내용 = 변수 (매개변수)
+        // 매개변수의 값은 선언이 아니라 호출 시에 정해진다
+        function print(string){
+            document.write(`${string}`);
+        } // return 값이 없으면 undefined
+        
+        // 미세먼지 농도 판별 함수
+        function dustCheck(dust) {
+            if (dust<=30) {return "좋음";}
+            else if ((30<dust) && (dust<=80)) {return "보통";}
+            else if ((80<dust) && (dust<150)) {return "나쁨";}
+            else {return "매우 나쁨";}
+        }
+
+        // 구구단 함수
+        function dan(num1){
+            for (i=1; i<10; i++){
+                        print(`${num1}*${i}=${num1*i}<p></p>`);}
+        }
+    </script>
+</head>
+<body>
+    <script>
+        // 함수를 만들기 전에 확인하는 방법
+        // 매개변수 > 변수 = 임의의 값
+        // 실행할 내용 > 변수의 값을 넣어서 실행
+        let string = "그린 아카데미입니다";
+        document.write(`<p>${string}</p>`);
+        //////////////////////
+        // 위의 내용으로 만든 함수 호출
+        print("반갑습니다");
+        // 호출한 공간에서 return값 가져옴
+        // 이때 변수에 담아주지 않으면 값은 사라진다 ex 3+4
+
+        // 미세먼지 농도 판별 조건문 > 함수로 만들기
+        // 1. 변수: dust
+        // 2. 조건식/참일 때 return할 내용:
+        // dust <=30 / 좋음
+        // dust <=80 / 보통
+        // dust <=150 / 나쁨
+        // 그외 (else) / 매우 나쁨
+        ////// 함수 안에서 
+        print("<p>오늘 미세먼지는 " +dustCheck(60)+"입니다</p>");
+
+        // 구구단의 단을 입력했을 때 그 단을 출력하는 내용을 작성 > 함수
+        let num=9;
+        for (i=1; i<10; i++){
+            document.write(num+"*"+i + " = " + num*i + " / ");
+            }
+            print("<p></p>");
+        // 함수 실행
+        dan(3);
+        dan(19);
+        // print 이미 함수 자체에서 선언했음. return 값이 있어야 undefined 안 나옴
+        document.write(dan);
+        // 괄호를 붙여주지 않으면 그 안의 함수 내용을 전달
+    </script>
+</body>
+</html>
