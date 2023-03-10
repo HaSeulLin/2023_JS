@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 중첩함수: 함수 안에서 작성한 함수
+        function outerFunction(){
+            let value = 10;
+            // 함수 안에서 작성된 함수는 작성된 함수 안에서 쓸 수 있다
+            function innerFunction(){
+                alert(value);
+            }
+            innerFunction();
+        }
+        outerFunction();
+        // innerFunction();
+
+
+        // 중첩 함수 실습1
+        function add(a,b){
+            let sum = a+b;
+            function printNum(){
+                document.write(`<p>${sum}</p>`);
+            }
+            printNum();
+        }
+        add(5,6);
+    </script>
+</body>
+</html>
