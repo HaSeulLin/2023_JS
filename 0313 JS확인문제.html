@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for (i=10; i>0; i--){
+            document.write(`${i} `);}
+            
+        let numArray = [1, 2, 3, 4];
+        for (i of numArray){
+            document.write(`${i}`);}
+        
+        let flowerArray = ["해바라기", "튤립", "장미"];
+        for (i in flowerArray){
+            document.write(`${flowerArray[i]} `);}
+
+        for (i=1; i<=6; i++){
+            if (6%i==0){document.write(`${i}`);};}
+
+        let test = function(){console.log("테스트 함수")};
+        test();
+        let add = (a,b) => a+b;
+        console.log(`${add(1,2)}`);
+        let messageAlert = () => alert("화살표식 함수로 바꿨");
+
+        function power(num1, num2=2){
+            let mul = 1;
+            for (i=1; i<=num2; i++){mul *= num1;}
+            console.log(`${num1}^${num2}=${mul}`);
+        }
+        power(3);
+        power(2,3);
+
+        const myStorage = {
+        car: {
+            inside: {
+                glovebox: "maps",
+                passengerseat: "crumbs"
+            },
+            outside: {
+                trunk: "jack"}
+            }};
+        console.log(`${myStorage.car.inside.glovebox}`);
+
+        let book = {
+            title : "Nature of Code",
+            price : "30000원",
+            writer : "다니엘 쉬프만",
+            ISBN : 9788968481901,
+            page : "620p",
+            intro : function(){
+                return `<p>ISBN ${book.ISBN}인 ${book.title}의 저자는 ${book.writer}입니다. 책 사양은 ${book.page}이며 가격은 ${book.price}입니다.</p>`;
+            }
+        };
+        document.write(`${book.intro()}`);
+
+        function Product(name, pay){
+            this.name = name;
+            this.pay = pay;
+            this.keep = function(){return this.name+"을 보관했습니다";};
+            this.getPay = () => this.pay;
+        }
+        let bbook = new Product("book",6000);
+        console.log(bbook.keep());
+        console.log(bbook.getPay());
+        let pencil = new Product("pencil",2000);
+        let hat = new Product("hat",8000);
+
+        /* 직접한거
+        function User(id, money, buyList){
+            this.id = id;
+            this.money = money;
+            this.buyList = [];
+            this.charge = plusMoney => this.money += plusMoney;;
+            this.buy = function(){
+                this.money -= Product.getPay();
+                this.buyList.push(Product.name);
+            };};
+        let harry = new User("harry", 10000);
+        console.log("주인 "+harry.id);
+        console.log("잔액 "+harry.money);
+        harry.charge(10000);
+        console.log("잔액 "+harry.money);
+        console.log(harry.buyList);
+        console.log(harry.buy());
+        console.log("잔액 "+harry.money);
+        */
+        
+        // 생성자 함수 답안
+        function User(id, money){
+            this.id = id;
+            this.money = money;
+            this.buyList = [];
+            this.charge = function(plusMoney){
+                return this.money += plusMoney;}
+            this.buy = function(Product){
+                // User 객체의 money에서 Product.getPay() 값 뺌
+                this.money -= Product.getPay();
+                // Product.name의 값을 buyList배열에 추가
+                // 미리 만들어둔 객체의 메소드나 속성을 사용할 수 있다
+                this.buyList.push(Product.name);
+            }
+        }
+        let harry = new User("harry", 10000);
+    </script>
+</body>
+</html>
