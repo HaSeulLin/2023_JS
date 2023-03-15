@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/0315 stye.css">
+</head>
+<body>
+    <!--innerHTML 사용해서 아래 태그 내용 값 바꾸기-->
+    <h1 id="title">DOM</h1>
+    <p class="class_name">내용을 작성했습니다.</p>
+    <ol id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+    
+    <a href="#">다음으로 연결</a>
+    <form id="form">
+        <label for="">이름</label>
+        <input type="text" id="name">
+    </form>
+
+    <ul id="list2">
+        <li>요소</li>
+        <li>요소</li>
+        <li>요소</li>
+        텍스트
+    </ul>
+
+    <!-- 클래스 추가 제거 + css 시트 연결-->
+    <h2 class="blue-color">클래스가 추가되면 파란색이 됩니다</h2>
+
+    <script>
+        // DOM : 도큐먼트 오브젝트 모델 : 문서 객체 모델
+        // html의 요소를 객체로 선택하거나 생성
+
+        // html 요소 선택
+        let title = document.querySelector("#title");
+        console.log(title);
+        let list = document.querySelector("#list");
+        console.log(list);
+        // console.dir은 문서 객체를 객체형태로 출력해서 보여줌
+        console.dir(list);
+
+        // 요소 선택 실습1
+        // document.querySelector()를 사용하면 하나의 요소를
+        // document.querySelectorAll()을 사용하면 여러개의 요소를 배열에 넣어 출력
+        // document.getElement~, document.getElements~의
+        // 이름에 따라서 한 개의 요소 또는 배열로 들고온다
+
+        // 요소(태그) 생성
+        let element = document.createElement("h1");
+
+        // 요소의 속성 추가 / 수정
+        // innerHTML 요소 안의 내용 변경
+        // .을 통해 속성에 접근
+        // .style객체의 속성에 접근하여 변경
+        element.innerHTML = "원하는 값 작성";
+        element.id = "title2";
+        element.style.color = "red";
+
+        // querySelector를 이용한 요소 선택과
+        // innerHTML을 이용한 내부 내용 작성
+        // class_name 태그 가져 와 내용 변경
+        let className = document.querySelector(".class_name");
+        className.innerHTML = "클래스를 통해 수정된 내용입니다";
+
+        // id가 title인 태그 가져 와 내용 변경
+        // let title = document.querySelector("#title"); 위에서 선언했음
+        let title3 = document.querySelector("#title");
+        title3.innerHTML = "아이디를 들고 와서 수정된 내용입니다";
+
+        // li 태그 가져 와 내용 변경
+        // querySelectorAll()
+        let liall = document.querySelectorAll("li");
+        console.log(liall); // 배열 안에 들어가 있음
+
+        // 인덱스 값으로 접근해서 바꾸기
+        liall[0].innerHTML = "요소를 수정하였습니다";
+        liall[1].innerHTML = "요소를 수정하였습니다";
+        liall[2].innerHTML = "요소를 수정하였습니다";
+
+        // for문으로 내용을 바꾸기
+        // for - 배열 in / lenght
+        let array = ["HTML", "CSS", "JS"]
+        for (i=0; i<liall.length; i++){
+            liall[i].innerHTML = array[i];
+        }
+
+        // a태그 가져온 후 href 변경
+        let ahrefNew = document.querySelector("a");
+        ahrefNew.href = "https://ncov.kdca.go.kr/";
+
+        // id가 form인 form 태그에서 input태그를 가져와 속성을 disabled=true로
+        let idform = document.querySelector("#form>input");
+        console.log(idform);
+        // querySelector()이용하여 요소 찾지 못하면 null
+        // null에서 속성 접근할 수 없기 때문에 오류 출력
+        idform.disabled = "true";
+
+        // DOM 요소의 스타일 속성
+        // backgroundColor
+        className.style.backgroundColor  = "yellow";
+        // textDecoration: line-through
+        title3.style.textDecoration = "line-through";
+        // color
+        for (i=0; i<liall.length; i++){
+            liall[i].style.color = "blue";
+        }
+
+        // Node : DOM 객체의 내용을 text/element/attr로 구분
+        // 객체를 글자와 태그와 속성으로 구분하는 단위
+        // .childNodes에서 태그와 글자로 구분되어 들어가 있음
+
+        // 노드로의 접근
+        // 부모 : parentNode, parentElement
+        // 자식 배열 : childNodes, children
+        // 첫번째, 마지막 자식 : firstChild, firstElementChild
+        // 형제 : nextSibling, nextElementSibling / previousSibling
+        // 각 부모나 형제로 접근한 뒤에
+        // 그 속성에 다시 부모나 형제자식에게 접근 가능
+
+        // list의 2번째 li인 CSS 값을 출력
+        // 1) list 요소에 .을 통해 찾기
+        console.log("요소찾기",list2.firstElementChild.nextElementSibling);
+        // 2) list 요소의 첫번째 자식을 변수로 저장한 후 찾음
+        let child = list2.firstElementChild;
+        console.log("요소찾기", child.nextElementSibling);
+
+        // 노드 실습1
+        // h1 태그의 childNodes
+        let head = document.querySelector("h1");
+        console.log("h1", head.childNodes[0].nodeValue);
+        // li 태그의 parentNode와 nextElementSibling
+        let li_parent = document.querySelector("li");
+        console.log("li 부모 형제", li_parent.parentNode.nextElementSibling);
+        // ul 태그의 firstChild와 nextSibling
+        let ul_fn = document.querySelector("ul");
+        console.log("ul 자식 형제", ul_fn.firstChild.nextSibling);
+
+        // 노드 관리 - 생성과 추가
+        let element2 = document.createElement("h2");
+        // 속성과 텍스트 생성
+        let attr = document.createAttribute("style");
+        let text = document.createTextNode("h2태그생성");
+        // 속성 추가
+        element2.setAttributeNode(attr);
+        // 글자 추가 : textNode이므로 appendChild를 통해 추가
+        element2.appendChild(text);
+        // body에 추가
+        let body = document.querySelector("body");
+        body.appendChild(element2);
+
+        // 속성과 태그 안의 글자의 경우
+        // DOM 속성에 접근해서 값을 바꿀 수 있다
+        element2.style.color = "green";
+        element2.innerHTML = "값 작성";
+        element2.textContent = "값 수정";
+
+        // 동일한 객체를 다른 곳에 추가
+        list2.appendChild(element2);
+        // body에 들어간 element2가 ul 안으로 이동
+        // 동일한 객체는 html문서에서 한 번만 사용 가능
+
+        // 동일한 객체를 여러번 html문서에서 사용하고 싶을 때
+        // 노드를 복제해서 사용
+        // 객체(배열)의 동일한 새로운 객체를 만들 때 메소드 사용
+        let element3 = element2.cloneNode(true); // 안쪽 내용까지 복제->true
+        body.appendChild(element3);
+
+        // 노드의 삭제
+        // ul태그의 첫번째 자식 li삭제 >> return DOM
+        list2.removeChild(list2.firstElementChild);
+        // ul태그의 첫번째 자식으로 들어가서 자기자신 삭제
+        // >> return 없음
+        list2.firstElementChild.remove();
+
+        // 노드 관리 실습1: 생성, 추가
+        // createElement로 p태그 생성 + body에 추가
+        let p_new = document.createElement("p");
+        body.appendChild(p_new);
+
+        // createTextNode로 내용 추가
+        let p_text = document.createTextNode("textNode를 이용한 텍스트입니다.");
+        p_new.appendChild(p_text);
+        // body.appendChild(p_text); // 동일한 내용을 사용하려면 복제
+        // 요소의 속성값 수정
+        p_text.nodeValue = "<span>textNode</span>의 nodeValue에 접근해 수정";
+        // innerHTML과 textNode의 차이
+        // textNode는 그 안에 들어가는 내용은 모두 글자로 들어간다
+        // <span> 그대로 문자로 출력
+        // innerHTML은 그 안에 태그를 작성하면 태그로 반영해서 출력
+        let attr2 = document.createAttribute("style");
+        p_new.setAttributeNode(attr2);
+        p_new.style.color = "red";
+
+        // 노드 관리 실습2: 제거
+        // p_new.removeAttribute("style");
+        // list2.removeChild(list2.firstElementChild);
+        // list2.remove();
+
+        // 노드 관리 실습3: 복제 h1, p태그
+        // 복제한 요소를 변수 넣어서 추가
+        // 변수 넣어서 추가하면, 변수를 통해 제어 가능
+        let p2 = p_new.cloneNode(true);
+        body.appendChild(p2);
+        p2.removeAttribute("style");
+        // 복제한 요소를 바로 추가
+        // 변수에 할당하지 않고 추가하면 JS에서 제어 X
+        // 다시 document.querySelector를 통해 가져와서 제어할 수 있음
+        body.appendChild(head.cloneNode(true));
+
+        // DOM 객체 속성 중 classList
+        // 각 요소의 클래스를 추가 or 제거 가능
+        let h2 = document.querySelector(".blue-color");
+        h2.classList.remove("blue-color"); // 삭제
+        h2.classList.add("blue-color", "hi","helloe"); // 추가 , 통해서 여러개 추가
+        h2.classList.toggle("blue-color"); // 토글
+
+    </script>
+</body>
+</html>

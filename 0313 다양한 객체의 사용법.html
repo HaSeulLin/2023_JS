@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 다양한 객체의 사용법
+        // 객체 안에 객체를 넣어서 사용
+        let memo = {
+            title: "오늘 할일",
+            todo: {
+                morning: ["청소", "준비"],
+                afternoon : ["수업"],
+                evening: ["정리", "독서"]
+            }
+        }
+        // 객체 안의 객체의 값에 접근하는 방법
+        document.write(`<p>${memo.todo.morning[0]}</p>`);
+
+        //배열 안에 객체
+        let todoList =[
+            {time: "아침", todo: "청소"},
+            {time: "오전", todo: "수업"},
+            {time: "오후", todo: "독서"}
+        ];
+        // 배열 안에 객체의 속성값을 찾는 법
+        document.write(`<p>${todoList[1].todo}</p>`);
+
+        // 객체 실습
+        let myMovie = {
+            title : "킹메이커",
+            time : "120",
+            rate : 8.84,
+            coment : {
+                id: "movieMaster",
+                content: "Good"
+            }};
+
+        // 객체 실습2
+        function AnimalChart(name, kind, age){
+            // 객체 속성
+            this.name = name; //0
+            this.kind = kind; //1
+            this.age = age; //2
+            this.sickness=""; //3
+            this.condition=""; //4
+            // 메소드
+            this.receive = function(sickness, condition){ //5
+                return this.sickness=sickness, this.condition=condition;}
+            this.confirm = function(){ //6
+                // 이름, 종류, 나이, 병명, 상태 출력
+                // 메소드를 제외하고 출력
+                // -> (반복) for in으로 객체 전체 출력
+                // -> (조건) typeof 자료형을 확인하고 출력
+                let animal = {
+                    name : "보호자 이름",
+                    kind : "동물의 종류",
+                    age : "나이",
+                    sickness : "병명",
+                    condition : "상태"
+                }
+                let allString = "";
+                for (let i in this){
+                    if (typeof this[i] != "function"){
+                    //    console.log(this[i]);
+                        allString += this[i]+ " ";
+                    }
+                }
+                return allString;
+            };
+            /* 내가 만든 코드 (작동 O)
+            this.confirm = function(){
+                let animal = {
+                    name : "보호자 이름",
+                    kind : "동물의 종류",
+                    age : "나이",
+                    sickness : "병명",
+                    condition : "상태"
+                }
+                for (let i in animal){
+                    console.log(animal[i]+": "+first[i]);
+                }
+                return `${this.name} ${this.kind} ${this.age} ${this.sickness} ${this.condition}`;
+            };
+            */
+        };
+        let first = new AnimalChart("홍길동","강아지",1);
+        first.receive("감기","나쁨");
+        console.log(first.confirm());
+
+        let AnimalChartList = [
+            new AnimalChart("홍길동","강아지",1),
+            new AnimalChart("전우치","고양이",8),
+            new AnimalChart("성춘향","페럿",3),
+            first
+        ];
+    </script>
+</body>
+</html>

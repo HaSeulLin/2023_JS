@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 내장 객체 : 자바스크립트 내에 미리 작성된 객체
+        // 객체를 생성하면 미리 작성된 메소드를 사용할 수 있다
+        // Array 배열
+        let array = ["HTML", "CSS", "JS"];
+        // join() > 문자로 연결
+        document.write(array.join(" / ")); 
+
+        // 내장객체의 메소드를 찾기 위해 mdb과 같은 사이트 사용
+        // prototype이 있는 메소드
+        // : prototype 객체를 생성하고 객체를 통해 사용할 수 있는 메소드
+        // prototype이 없는 메소드
+        // : 생성자 함수 이름을 통해서 사용하는 메소드
+        // 자주 사용하는 객체는 생성자 함수 형태를 안 쓰기도 한다
+        // 대표적인 예 : Array [] >> new Array()로도 작성 가능
+
+        let arrayTest = new Array(1,2,3);
+        document.write(arrayTest);
+
+        // concat() : 두 배열의 결합
+        // 두 개의 배열을 합해서 return
+        let arrayConcat = array.concat(["일","이","삼"]);
+        document.write(`<p>${arrayConcat}</p>`);
+        document.write(`<p>${array}</p>`);
+        let arrayCopy = array;
+        document.write(`<p>${arrayCopy}</p>`);
+
+        // 기초자료형의 복사
+        let a = 1;
+        let b = a; // 대입연산자 사용해서 복사
+        b++; // b는 별개의 값을 갖는다
+        document.write(a,b);
+
+        // 배열 값의 복사 (객체 복사)
+        // 배열의 경우, 요소의 값을 여러개 가지고 있기 때문에
+        // 배열의 변수 이름에는 주소 값이 들어가 있다
+        // (변수의 이름으로 요소들이 출력되는 것인 자바스크립트에서 제공)
+        // 그래서 변수를 할당하면 배열의 요소가 들어가는 것이 아닌, 주소 전달
+        // 객체는 객체가 담긴 변수 이름으로 할당할 수 없다
+        let arrayCopy1 = array;
+        array.push("새로운 언어");
+        document.write(`<p>${array}</p>`);
+        document.write(`<p>${arrayCopy1}</p>`);
+
+        // 1) 메소드를 이용해서 복사
+        let arrayCopy2 = array.concat();
+        arrayCopy2.push("React");
+        document.write(`<p>${arrayCopy2}</p>`);
+        document.write(`<p>${array}</p>`);
+
+        // 2) 값을 꺼내 쓰는 연산자를 이용해서 복사
+        // ... (스프레드 연산자) 객체나 배열의 값을 꺼내서 반환
+        let arrayCopy3 = [...array];
+        arrayCopy3.push("React");
+        document.write(`<p>${arrayCopy3}</p>`);
+        document.write(`<p>${array}</p>`);
+
+        // splice() : 지정된 배열의 값을 삭제하거나 추가
+        array.splice(1,1); // array의 값을 직접 바꿈 // 배열 1~1 값 삭제
+        document.write(`<p>${array}</p>`);
+        // push(), pop() // array의 값을 직접 바꿈
+        array.pop();
+        document.write(`<p>${array}</p>`);
+
+        // String 문자열
+        // String은 배열과 유사하다
+        let string = "홍길동";
+        // charAt() 0~n: 
+        document.write(`<p>${string.charAt(0)}</p>`);
+        document.write(`<p>${string.charAt(1)}</p>`);
+
+        // match() : 지정된 문
+        // 값이 있을 때는 그 값을, 없을 때면 null을 return
+        document.write(`<p>${string.match("홍")}</p>`); // 홍
+        document.write(`<p>${string.match("홍홍")}</p>`); // null
+        document.write(`<p>${string.match("향")}</p>`); // null
+        // search(): 지정된 문자와 동일한 문자 찾기
+        document.write(`<p>${string.search("길")}</p>`); // 인덱스값 찾아줌
+        document.write(`<p>${string.search("향")}</p>`); // 없는 값: -1
+
+        // replace(a,b): a의 값을 b로 대체
+        // string 원본값은 그대로 두고 결과값만 바꿔서 출력
+        document.write(`<p>${string.replace("홍","길")}</p>`); // 길길동
+
+        // split() 문자열을 자르는 메소드
+        // return값으로 배열을 돌려준다
+        // 전화번호, 주민등록번호 등과 같이 기호로 나뉘는 문자열을 잘라서 사용
+        document.write(`<p>${string.split("길")}</p>`); // 홍,동
+        document.write(`<p>${Array.isArray(string.split("길"))}</p>`); // true
+
+        // Date 객체 : 날짜와 시간
+        let today = new Date();
+        // 날짜 >> 달을 가져올 때 달의 값의 범위가 0~11이기에 1을 더해서 사용
+        document.write(`<p>${today.getFullYear()}년${today.getMonth()+1}월${today.getDate()}일</p>`);
+        // 시간
+        document.write(`<p>${today.getHours()}시${today.getMinutes()}분</p>`);
+
+        // 일월화수목금토(0~6) > 배열[인덱스] / 조건문
+        document.write(`<p>${today.getDay()}</p>`);
+        // getTime : 시작시간과 끝시간을 이용해서 전체걸린 시간 네체크
+        document.write(`<p>${today.getTime()}</p>`);
+        // ex) for문을 실행할 때 걸리는 시간
+        let startTime = new Date();
+        for (let i =0 ;i<100;i++){
+            console.log(i);
+        }
+        let endTime = new Date();
+        document.write(`<p>${endTime.startTime}</p>`);
+
+        // date객체의 set 메소드
+        today.setFullYear(2020);
+        document.write(`<p>${today.getFullYear()}</p>`);
+
+        // UTC날짜
+        document.write(`<p>${today.getUTCHours()}시 ${today.getUTCMinutes()}분</p>`);
+
+
+        // Math 객체 - 생성자로 객체를 만들지 않고 바로 사용
+        // 수학 연산에 관련된 상수와 메소드를 가지고 있음
+        document.write(`<p>${Math.random()}</p>`);
+        document.write(`<p>${Math.max(1,3,5)}</p>`);
+
+        // 랜덤한 수를 정수로 바꿔서 사용하기
+        // Math.random()에 원하는 범위의 수를 곱해서 사용
+        document.write(Math.random()*5); // 5까지의 정수 범위 (소수점 실수 존재)
+        document.write(`<p>${Math.floor(Math.random()*5)+1}</p>`); //정수만 출력
+
+        // Number 객체
+        // Number로 접근해서 쓰는 메소드와 속성이 있고
+        // 객체를 만들어서 접근하는 메소드가 있다
+        document.write(`<p>${Number.isNaN("NaN")}</p>`); // Number.라서?다 숫자화
+        let num =10.56;
+        // toFix()는 숫자의 값의 소수점 어디까지 
+        document.write(`<p>${num.toFixed(2)}</p>`);
+
+        // 래퍼 객체
+        // 숫자, boolean, 문자열과 같은 기초자료형은
+        // 메소드를 사용할 수 없지만 객체의 메소드를 사용하기 위해
+        // 자바스크립트에서 메소드를 사용하기 전에 임시로 객체로 만들어서
+        // 메소드에 접근한다
+
+        // 배열 객체
+        // toString : 객체의 담은 변수이름을 호출했을 때 나오는 내용과 동일
+        let arrayString = [1, 2, 3, 4];
+        // 객체의 이름으로 작성했을 때 출력하고 싶은 내용 수정
+        arrayString.toString = function() {return "배열"};
+        document.write(`<p>${arrayString}</p>`);
+        let object = {
+            name: "객체",
+            value: "값",
+            // toString 메소드를 작성하면 객체의 변수 이름을 호출했을 때
+            // 출력할 내용을 정할 수 있다
+            toString : function() {return this.value}
+        }
+        document.write(`<p>${object}</p>`);
+        </script>
+</body>
+</html>

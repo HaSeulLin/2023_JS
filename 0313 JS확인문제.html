@@ -71,12 +71,12 @@
         let pencil = new Product("pencil",2000);
         let hat = new Product("hat",8000);
 
-        /* 직접한거
+        /* 직접한거 (오류)
         function User(id, money, buyList){
             this.id = id;
             this.money = money;
             this.buyList = [];
-            this.charge = plusMoney => this.money += plusMoney;;
+            this.charge = plusMoney => this.money += plusMoney;
             this.buy = function(){
                 this.money -= Product.getPay();
                 this.buyList.push(Product.name);
@@ -91,7 +91,27 @@
         console.log("잔액 "+harry.money);
         */
         
-        // 생성자 함수 답안
+/*  수정
+        function User(id, money){
+            this.id = id;
+            this.money = money;
+            this.buyList = [];
+            this.charge = plusMoney => this.money += plusMoney;
+            this.buy = function(Product){
+                this.money -= Product.getPay();
+                this.buyList.push(Product.name);
+            };};
+        let harry = new User("harry", 10000);
+        console.log("주인 "+harry.id);
+        console.log("잔액 "+harry.money);
+        harry.charge(10000);
+        console.log("잔액 "+harry.money);
+        console.log(harry.buyList);
+        console.log(harry.buy(hat));
+        console.log("잔액 "+harry.money);
+*/
+
+       // 생성자 함수 답안
         function User(id, money){
             this.id = id;
             this.money = money;

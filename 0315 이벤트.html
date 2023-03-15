@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--HTML 태그에서 어떤 이벤트가 발생-->
+    <!--onclick : 태그를 클릭했을 때 실행-->
+    <h1 onclick="printConsole()">이벤트</h1>
+    <button onclick="alert('버튼을 클릭했습니다')">클릭하세요</button>
+    <p onmouseover="printConsole('p')">마우스를 올리세요</p>
+    
+    <hr>
+    <!--요소의 속성으로 등록하는 방법 실습 1--> 
+    <p>값을 넣어주세요</p>
+    <input id="input" type="text" value="값"></input>
+    <!--button에 클릭 이벤트--> 
+    <button onclick="printConsoleR()">확인</button>
+    <!--p태그를 가져와서 값 넣어주기-->
+    <p id="textprint"></p>
+
+    <hr>
+    <!--요소의 속성으로 등록하는 방법 실습 2--> 
+    <input id="input2" type="text" value="포커스"
+    onfocus="printConsoleRR()" onblur="printConsoleRRR()"></input>
+    <button>확인</button>
+
+    <script>
+        // HTML 태그에서 이벤트가 발생했을 때 실행 할 내용 작성
+        // 함수로 만들어서 onclick 이벤트에 전달
+        // console 창에 보임
+        function printConsole(tag){
+            console.log(tag+"를 눌렀습니다");
+        }
+        // 요소의 속성으로 등록하는 방법 실습 1
+        function printConsoleR(){
+            // input 태그 가져오기
+            let input = document.querySelector("#input");
+            // p태그 가져오기
+            let p = document.querySelector("#textprint");
+            // p태그의 innerHTML 값을 input의 value로 할당
+            textprint.innerHTML = input.value;
+
+            /* 내가 작성한 코드
+            let value = document.getElementById('input').value;
+            textprint.innerHTML = value;
+            */
+
+            // p태그의 글자색 바꾸기
+            p.style.color="blue";
+        }
+        // 실습 2
+        function printConsoleRR(){
+            input2.style.backgroundColor="gray";
+        }
+        function printConsoleRRR(){
+            input2.style.backgroundColor="white";
+        }
+    </script>
+</body>
+</html>
