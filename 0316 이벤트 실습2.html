@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="pevent" onclick="changeP()">눌러주세요</p>
+
+    <div>
+        <img id="image" src="./js/ham.jpg" alt="ham" width="300px"
+        onmouseover="imageOver()" onmouseleave="imageDisOver()">
+    </div>
+
+    <ol>
+        <li id="first_list">
+            <input type="checkbox" name="" id="checkbox" onclick="clickStyle()">
+            첫번째 리스트입니다
+        </li>
+    </ol>
+    <script>
+            let pevent = document.querySelector("#pevent");
+            function changeP(){
+                if (pevent.style.color == ""){
+                    pevent.innerHTML = "숨겨진 단어입니다"
+                    pevent.style.color = "red";
+                }
+                else {
+                    pevent.innerHTML = "눌러주세요";
+                    pevent.style.color = "";
+                }
+            }
+
+            let image = document.querySelector("#image");
+            function imageOver(){
+                document.querySelector("#image").src = "./js/ham2.jpg";
+            }
+            function imageDisOver(){
+                document.querySelector("#image").src = "./js/ham.jpg";
+            }
+
+            function clickStyle(){
+                let checkbox = document.querySelector("#checkbox");
+                let li = document.querySelector("#first_list");
+                if(checkbox.checked){
+                    checkbox.parentElement.style.color="lightgray";
+                }
+                else{
+                    checkbox.parentElement.style.color="";
+                }
+            }
+    </script>
+</body>
+</html>

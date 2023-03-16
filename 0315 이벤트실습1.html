@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- input 태그와 button을 이용한 이벤트 연습 -->
+    <p>아래 숫자를 입력하면 구구단을 p 태그를 이용하여 출력</p>
+    <input type="number" id="dan">
+    <button onclick="gugudanPrint()">단 확인</button>
+    <div id="gugudan">
+        <p id="p1" onmouseenter="chageColor()"></p>
+    </div>
+
+    <button id="btn2" onclick="printTest()">버튼</button>
+    
+    <p id="pevent" onclick="changeP()">눌러주세요</p>
+
+    <div>
+        <img id="image" src="./js/ham.jpg" alt="ham" width="300px"
+        onmouseover="imageOver()" onmouseleave="imageDisOver()">
+    </div>
+
+    <ol>
+        <li id="first_list">
+            <input type="checkbox" name="" id="checkbox">
+            첫번째 리스트입니다
+        </li>
+    </ol>
+
+
+
+    <script>
+        function gugudanPrint(){
+            let dan = document.querySelector("#dan").value;
+            let p = document.querySelector("#gugudan>p");
+            p.innerHTML= "";
+
+            // p태그에 출력이 어렵다면 콘솔창에 출력
+                for (let j=1; j<10; j++){
+                    // 바로 innerHTML로 할당을 하면 이전 값이 사라짐
+                    // 이전 값을 살리기 위해서 이전 문자열과 더해서 출력
+                    p.innerHTML += `${dan}X${j}=${j*Number(dan)} `;
+                    console.log(`${dan}X${j}=${j*Number(dan)}`);
+                }
+                
+                // ul태그 만들어서 li생성하며 출력
+                // 1) ul태그 생성 - createElement('ul')
+                // 2) li 태그 안에 dan*1이 들어간 태그가 9개 생성 - innerHTML
+                // 3) li 태그로 생성된 요소를 ul태그에 9번 추가
+                // 4) ul태그도 body 추가 - appendChild
+                let ul = document.createElement('ul');
+                for (let i=1; i<10; i++){
+                    let li = document.createElement('li');
+                    li.innerHTML = `${dan}x${i}=${dan*i}`;
+                    ul.appendChild(li);
+                }
+                let body = document.querySelector("body");
+                body.appendChild(ul);
+            }
+            
+            // li 요소 생성
+            // function gugudnaPrint에서 사용한 for문을 풀어쓴 코드
+            let li = document.createElement('li');
+            li.innerHTML = `1`;
+            document.querySelector("body").appendChild(li);
+
+            li = document.createElement('li');
+            li.innerHTML = `2`;
+            document.querySelector("body").appendChild(li);
+
+            li = document.createElement('li');
+            li.innerHTML = `3`;
+            document.querySelector("body").appendChild(li);
+
+            // 변수 할당
+            let num = 1;
+            num = 10;
+            num = 10 + 5;
+    </script>
+</body>
+</html>
