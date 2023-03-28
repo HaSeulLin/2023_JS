@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This</h1>
+    <p>this는 자기 자신 객체를 불러오는 키워드이다</p>
+    <p>자기자신의 기준 : 호출한 공간</p>
+    <button id="btn">this 확인</button>
+    <ul id="list">
+        <li><button>this확인1</button></li>
+        <li><button>this확인2</button></li>
+        <li><button>this확인3</button></li>
+    </ul>
+
+    <script>
+        /*
+        1. 생성자 함수를 통해서 자기자신을 호출하는 this
+        2. 이벤트가 실행되었을 때 실행될 함수에서 호출하는 this
+        */
+        function Box() {
+            this.height = 10;
+            this.width = 10;
+            this.area = function() {
+            return this.height*this.width;
+            }
+        }
+        // 생성자 함수로 작성한 this는 new를 통해
+        // 객체가 생성되었을 때 값을 가진다 
+        let mybox = new Box();
+        console.log(mybox.height, mybox.area());
+
+        // 객체가 없는 함수에서 this를 사용
+        function testThis() {
+            console.log(this);
+        }
+        // window 객체가 this로 나옴
+        testThis();
+
+        // bind를 이용해서 this가 없는 함수에 연결해서 쓸 수 있다
+        // 함수를 작성하고 그 뒤에 ()를 붙이면 그 자리에서 바로 실행
+        testThis.bind(mybox)();
+
+        // 버튼에 이벤트리스너 추가, this 확인
+        const btn = document.querySelector("#btn");
+        btn.addEventListener("click", function(){
+            console.log(this);
+        });
+
+        // 이벤트에서 함수 안에 this를 사용해줄 때
+        // 그 이벤트가 실행된 객체를 들고 온다
+        const btnList = document.querySelectorAll("#list li");
+        for (let i=0; i<btnList.length; i++) {
+            btnList[i].addEventListener("click", testThis);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>FetchAPI와 Async-await</h1>
+    <p>fetch를 쓰면 간단하게 response의 값을 가져올 수 있다</p>
+    <p>
+        대신에 then을 이용하여 계속 작성하기 보다
+        Async-await를 이용해서 작성할 수 있다
+    </p>
+
+    <button id="fetch-btn">버튼을 누르면 콘솔에 값을 출력</button>
+
+    <!-- fetch async/await 연습 -->
+    <button id="fetch-btn2">버튼을 누르면 p태그의 값을 수정: 부산</button>
+    <p id="fetch-json"></p>
+
+    <script>
+        // async-await >> 세트로 사용
+        // async : 비동기라는 뜻
+        // 함수의 앞에 붙여서 비동기로 사용
+        // await : 기다린다는 뜻
+        // 실행할 메소드나 함수 앞에 붙여서 값을 가져올 때까지 기다림
+        async function doFetch() {
+            // 첫번째 then을 통해 가져온 값
+            const promise = await fetch('./data.txt');
+            // 두번째 then을 통해 가져온 값
+            const response = await promise.text();
+            console.log(response);
+        }
+        doFetch();
+
+        // fetchAPI를 이용해서 JSON 가져오기
+        // 익명 함수일 경우 함수 앞에 붙이기
+        let doJson = async function() {
+            const promise = await fetch('./data.json');
+            const response = promise.json();
+            console.log(response);
+        } 
+        doJson();
+
+        // 버튼을 누르면 콘솔에 값 출력
+        // 작성한 비동기함수를 이벤트에 추가
+        const fetchBtn = document.querySelector("#fetch-btn");
+        fetchBtn.addEventListener("click",doFetch);        
+
+        // 버튼 눌러 p태그 값 '부산'으로 수정
+        const fethcBtn2 = document.querySelector("#fetch-btn2");
+        fethcBtn2.addEventListener("click", async function () {
+            const promise = await fetch('./data.json');
+            // 주소 값이 잘못되었을 경우 : 함수 종료
+            if (!promise.ok) {
+                console.error("값이 존재하지 않음", promise.ok);
+                return -1;
+            }
+            const response = await promise.json();
+            
+            // 값을 가져와서 사용
+            const fetchJson = document.querySelector("#fetch-json");
+            fetchJson.innerHTML = response.object.address;
+            });
+    </script>
+</body>
+</html>

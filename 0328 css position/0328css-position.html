@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css-position.css">
+</head>
+<body>
+    <h1>CSS position 확인</h1>
+    <h2>absolute</h2>
+    <div class="box">
+        <div class="absolute">절대 좌표</div>
+    </div>
+    <div class="box relative">
+        <div class="absolute">relative 안에 있는 절대 좌표</div>
+    </div>
+    <p>
+        absolute를 사용하는 요소의 가장 가까운 부모나 조상이
+        relative를 사용하고 있다면 그 위치에서 절대값으로 움직인다
+    </p>
+    <div class="box relative">
+        <div class="box-small relative">
+            <div class="absolute">relative 안에 있는 절대 좌표</div>
+        </div>
+    </div>
+</body>
+</html>

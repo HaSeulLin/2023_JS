@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>공공데이터 사용하기</h1>
+    <button id="data">데이터 가져오기</button>
+    <ul id="data-list">
+        <li>식당 이름, 메뉴</li>
+    </ul>
+
+    <script>
+        // fetch - async/await를 이용해서 가져오기
+        async function getPublicData() {
+            // fetch() 안에 주소 넣기
+            // 공공데이터의 주소에 서비스키와 관련정보를
+            // 이름=값&이름=값과 같이 넣어서 요청할 수 있다
+            // 모든 공공데이터의 규칙이 같지 않기에 반드시 문서 참고
+            const promise = await fetch ("https://busan-food.openapi.redtable.global/api/menu-dscrn/korean?serviceKey=XFAXApRDbmxkfUFPH1EOA09wOMOfyTSZt5L8wB9BZfFaZ3gL9fCsYdy9pwhPiSaB&pageNo=2");
+            const response = await promise.json();
+            console.log(response);
+            // response의 값을 확인하고
+            // body의 0번째 인덱스 내용 console에 출력
+            // body의 0번째 인덱스의 MENU_NM 출력
+            console.log(response.body[0].MENU_NM);
+
+            // 가져온 데이터를 append를 이용해서 추력
+            // h3 : 식당 이름
+            // p : 메뉴 이름
+            const h3 = document.createElement("h3");
+            h3.innerHTML = response.body[0].RSTR_NM;
+            const p = document.createElement("p");
+            p.innerHTML = response.body[0].MENU_NM;
+            const body = document.querySelector("body");
+            body.appendChild(h3);
+            body.appendChild(p);
+        }
+        getPublicData();
+
+
+        // data 버튼 눌렀을 때 data-list에 식당이름과 메뉴 10개 출력하기
+        // 버튼 클릭했을 때 공공 데이터 들고 오기
+        // count 설정 >> 클릭할 때마다 다음 데이터로 넘어감
+        let count = 0;
+        let data = "";
+        const dataBtn = document.querySelector("#data");
+        dataBtn.addEventListener("click", async () => {
+            const promise = await fetch ("https://busan-food.openapi.redtable.global/api/menu-dscrn/korean?serviceKey=XFAXApRDbmxkfUFPH1EOA09wOMOfyTSZt5L8wB9BZfFaZ3gL9fCsYdy9pwhPiSaB&pageNo=2");
+            if (!promise.ok) {
+                console.error("값이 없음");
+                return -1;
+            }
+
+            const response = await promise.json();
+            console.log(response);
+            // 전역 변수에 response값 저장해서 전달가능
+            data = response;
+            // 메뉴 출력
+            // i값을 통해서 인덱스의 위치 접근
+            // i값을 10씩 증가해서 찾으면 다른 값을 가져올 수 있다
+            // 1번 클릭할 때마다 count값 1 증가
+            // i=10*count, i<10+10*count : (0,1,2)
+            // count 값은 어디에서? 함수밖(전역변수)
+            // 함수의 실행이 끝나도 값이 유지되어야 함
+            for (let i=0+10*count; i<10+10*count; i++){
+                const li = document.createElement("li");
+                li.innerHTML = response.body[i].RSTR_NM+", "+response.body[i].MENU_NM;
+                const ul = document.querySelector("#data-list");
+                ul.appendChild(li);
+            }
+            // 한 번 출력 후 count 증가
+            count++;
+        });
+    </script>
+</body>
+</html>

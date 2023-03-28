@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css.css">
+    <script type="text/javascript">
+        $(window).resize(function(){resizeYoutube();});
+        $(function(){resizeYoutube();});
+        function resizeYoutube(){ $("iframe").each(function(){ if( /^https?:\/\/www.youtube.com\/embed\//g.test($(this).attr("src")) ){ $(this).css("width","100%"); $(this).css("height",Math.ceil( parseInt($(this).css("width")) * 480 / 854 ) + "px");} }); }
+    </script>
 </head>
 <body>
     <div class="imagebox">
