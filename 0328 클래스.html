@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>클래스</h1>
+    <p>객체지향언어에서 객체를 만드는 틀을 이야기함</p>
+    <p>ES6에서 추가된 내용</p>
+    <p>추가되기 전에는 생성자 함수를 사용해서 객체 생성</p>
+    <script>
+        // 클래스 문법
+        class MyClass { // function대신 class 사용 > ()없음
+            // 속성 : constructor()를 통해 값을 받아와서 할당
+            constructor(name) {
+                this.name = name;
+                this.money = 0;
+            }
+            //메소드 : 메소드이름() {}
+            sayName() {
+            //    alert(this.name);
+            }
+            setMoney(num) {
+                this.money = num;
+            }
+        }
+        // 클래스를 이용한 객체 생성
+        let myClass = new MyClass("green");
+        myClass.sayName();
+        console.log(myClass);
+
+        // 클래스와 비교하기 위한 생성자 함수
+        function MyFunc(name) {
+            this.name = name;
+            this.money = 0;
+            this.sayName = function() {
+            //    alert(this.name);
+            };
+            this.setMoney = num => this.money = num;
+        }
+        // 생성자 함수로 만든 객체 호출
+        let myFunc = new MyFunc("blue");
+        myFunc.sayName();
+        console.log(myFunc);
+
+        // 클래스로 만든 객체의 내용과 생성자 함수로 만든 객체의 내용을
+        // for in을 통해서 전체 출력하기
+        for (i in myClass) {
+            // i의 값은 속성의 이름
+            console.log(i, myClass[i]);
+        }
+        for (let i in myFunc) {
+            // i의 값은 속성과 메소드의 이름
+            console.log(i, myFunc[i]);
+        }
+    </script>
+</body>
+</html>
